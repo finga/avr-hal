@@ -1,3 +1,33 @@
+#[cfg(feature = "attiny816")]
+avr_hal_generic::impl_port_traditional! {
+    enum Ports {
+        PORTA: (crate::pac::PORTA, out, in_, dir),
+        PORTB: (crate::pac::PORTB, out, in_, dir),
+        PORTC: (crate::pac::PORTC, out, in_, dir),
+    }
+
+    pub struct Pins {
+        pa0: PA0 = (crate::pac::PORTA, PORTA, 0, out, in_, dir),
+        pa1: PA1 = (crate::pac::PORTA, PORTA, 1, out, in_, dir),
+        pa2: PA2 = (crate::pac::PORTA, PORTA, 2, out, in_, dir),
+        pa3: PA3 = (crate::pac::PORTA, PORTA, 3, out, in_, dir),
+        pa4: PA4 = (crate::pac::PORTA, PORTA, 4, out, in_, dir),
+        pa5: PA5 = (crate::pac::PORTA, PORTA, 5, out, in_, dir),
+        pa6: PA6 = (crate::pac::PORTA, PORTA, 6, out, in_, dir),
+        pa7: PA7 = (crate::pac::PORTA, PORTA, 7, out, in_, dir),
+        pb0: PB0 = (crate::pac::PORTB, PORTB, 0, out, in_, dir),
+        pb1: PB1 = (crate::pac::PORTB, PORTB, 1, out, in_, dir),
+        pb2: PB2 = (crate::pac::PORTB, PORTB, 2, out, in_, dir),
+        pb3: PB3 = (crate::pac::PORTB, PORTB, 3, out, in_, dir),
+        pb4: PB4 = (crate::pac::PORTB, PORTB, 4, out, in_, dir),
+        pb5: PB5 = (crate::pac::PORTB, PORTB, 5, out, in_, dir),
+        pc0: PC0 = (crate::pac::PORTC, PORTC, 0, out, in_, dir),
+        pc1: PC1 = (crate::pac::PORTC, PORTC, 1, out, in_, dir),
+        pc2: PC2 = (crate::pac::PORTC, PORTC, 2, out, in_, dir),
+        pc3: PC3 = (crate::pac::PORTC, PORTC, 3, out, in_, dir),
+    }
+}
+
 #[cfg(feature = "attiny85")]
 avr_hal_generic::impl_port_traditional! {
     enum Ports {

@@ -5,6 +5,7 @@
 //! Common HAL (hardware abstraction layer) for ATtiny* microcontrollers.
 //!
 //! **Note**: This version of the documentation was built for
+#![cfg_attr(feature = "attiny816", doc = "**ATtiny816**.")]
 #![cfg_attr(feature = "attiny85", doc = "**ATtiny85**.")]
 #![cfg_attr(feature = "attiny88", doc = "**ATtiny88**.")]
 //! This means that only items which are available for this MCU are visible.  If you are using
@@ -23,10 +24,15 @@ compile_error!(
 
     Please select one of the following
 
+    * attiny816
     * attiny85
     * attiny88
     "
 );
+
+/// Reexport of `attiny816` from `avr-device`
+#[cfg(feature = "attiny816")]
+pub use avr_device::attiny816 as pac;
 
 /// Reexport of `attiny85` from `avr-device`
 #[cfg(feature = "attiny85")]
@@ -53,6 +59,13 @@ pub use port::Pins;
 
 pub struct Attiny;
 
+#[cfg(feature = "attiny816")]
+#[macro_export]
+macro_rules! pins {
+    ($p:expr) => {
+        $crate::Pins::new($p.PORTA, $p.PORTB, $p.PORTC)
+    };
+}
 #[cfg(feature = "attiny85")]
 #[macro_export]
 macro_rules! pins {
